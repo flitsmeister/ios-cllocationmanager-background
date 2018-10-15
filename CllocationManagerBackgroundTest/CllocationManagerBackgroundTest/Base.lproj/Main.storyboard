@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14313.18" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14283.14"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--View Controller-->
+        <scene sceneID="tne-QT-ifu">
+            <objects>
+                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="CllocationManagerBackgroundTest" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7Fd-rd-bkk">
+                                <rect key="frame" x="16" y="62" width="90" height="52"/>
+                                <color key="backgroundColor" red="0.50196078430000002" green="0.59607843140000005" blue="0.6705882353" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="52" id="yhw-s7-eAi"/>
+                                </constraints>
+                                <state key="normal" title="Send logs">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="btnSendLogsPresesd:" destination="BYZ-38-t0r" eventType="touchUpInside" id="FRb-b3-ZqD"/>
+                                </connections>
+                            </button>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="Xam-9j-wgE">
+                                <rect key="frame" x="0.0" y="148" width="375" height="519"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="10"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="d1F-fE-U6f">
+                                <rect key="frame" x="135.5" y="62" width="104" height="52"/>
+                                <color key="backgroundColor" white="0.66666666669999997" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="52" id="Bm0-BJ-kQe"/>
+                                </constraints>
+                                <state key="normal" title="Refresh">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="btnRefreshPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="a2v-1m-F4z"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TuV-P0-52m">
+                                <rect key="frame" x="255.5" y="62" width="103.5" height="52"/>
+                                <color key="backgroundColor" red="0.96414965391159058" green="0.098202846944332123" blue="0.052624054253101349" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="52" id="RYp-58-v6j"/>
+                                </constraints>
+                                <state key="normal" title="Clear">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="btnClearLogPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="28b-7x-CSj"/>
+                                    <action selector="btnRefreshPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Kf9-Yc-kgG"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="Xam-9j-wgE" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="0Dt-CO-pAv"/>
+                            <constraint firstItem="TuV-P0-52m" firstAttribute="width" secondItem="d1F-fE-U6f" secondAttribute="width" id="4zT-sE-D26"/>
+                            <constraint firstItem="Xam-9j-wgE" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="6Uv-UV-VAX"/>
+                            <constraint firstItem="TuV-P0-52m" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="42" id="9H6-jO-qs0"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="TuV-P0-52m" secondAttribute="trailing" constant="16" id="CRa-do-B1X"/>
+                            <constraint firstItem="d1F-fE-U6f" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="42" id="JdK-sM-f6B"/>
+                            <constraint firstItem="7Fd-rd-bkk" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="42" id="aar-mh-0Qg"/>
+                            <constraint firstItem="7Fd-rd-bkk" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="16" id="fPN-bD-IJE"/>
+                            <constraint firstItem="d1F-fE-U6f" firstAttribute="leading" secondItem="7Fd-rd-bkk" secondAttribute="trailing" constant="16" id="l5T-sf-X3J"/>
+                            <constraint firstItem="TuV-P0-52m" firstAttribute="leading" secondItem="d1F-fE-U6f" secondAttribute="trailing" constant="16" id="qEw-Ds-AdR"/>
+                            <constraint firstItem="d1F-fE-U6f" firstAttribute="width" secondItem="7Fd-rd-bkk" secondAttribute="width" id="xMq-pT-mYW"/>
+                            <constraint firstItem="Xam-9j-wgE" firstAttribute="bottom" secondItem="6Tk-OE-BBY" secondAttribute="bottom" id="xaS-HY-6XV"/>
+                            <constraint firstItem="Xam-9j-wgE" firstAttribute="top" secondItem="7Fd-rd-bkk" secondAttribute="bottom" constant="34" id="xsZ-sP-ryV"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
+                    </view>
+                    <connections>
+                        <outlet property="logView" destination="Xam-9j-wgE" id="uJK-nu-ILG"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="132" y="133.5832083958021"/>
+        </scene>
+    </scenes>
+</document>
