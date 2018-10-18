@@ -14,17 +14,23 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
 
-
+    var logger: DDFileLogger?
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
         
-        if let fileLogger = DDFileLogger.init() {
+        if logger == nil,
+            let fileLogger = DDFileLogger.init() {
+            
             fileLogger.rollingFrequency = 60 * 60 * 24 // 24 hour rolling, new file every day
             fileLogger.logFileManager.maximumNumberOfLogFiles = 10; // between 1 and 10 days of logs.
             fileLogger.maximumFileSize = 1024 * 4096; // 4MB so, max 40MB log file
             
             DDLog.add(fileLogger, with: .info)
+        
+            logger = fileLogger
         }
+        
+        LocationController.sharedInstance.start()
         
         return true
     }
@@ -51,6 +57,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
     }
 
-
+    func applicationDidReceiveMemoryWarning(_ application: UIApplication) {
+        DDLogInfo("[APPDELEGATE] [MEMORY-WARNING]")
+    }
 }
 
