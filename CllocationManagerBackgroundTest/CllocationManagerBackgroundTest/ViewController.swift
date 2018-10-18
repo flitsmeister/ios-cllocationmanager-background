@@ -12,8 +12,7 @@ import CocoaLumberjackSwift
 
 class ViewController: UIViewController {
 
-    let locationController = LocationController.init()
-    
+
     @IBOutlet weak var logView: UITextView!
     
     override func viewDidLoad() {
@@ -21,7 +20,7 @@ class ViewController: UIViewController {
         DDLogInfo("[ViewController] - [START]")
         NotificationCenter.default.addObserver(self, selector: #selector(ViewController.viewWillEnterForeGround), name: UIApplication.willEnterForegroundNotification, object: nil)
 
-        locationController.start()
+        
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -64,6 +63,10 @@ class ViewController: UIViewController {
         let vc = DiagnoseMailHelper.diagnoseMailVC(delegate: self)
         
         self.present(vc, animated: true, completion: nil)
+    }
+    
+    override func didReceiveMemoryWarning() {
+        DDLogInfo("[VIEWCONTROLLER] [didReceiveMemoryWarning]")
     }
     
 }

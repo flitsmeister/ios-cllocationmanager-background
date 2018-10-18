@@ -12,25 +12,33 @@ import CocoaLumberjackSwift
 
 class LocationController : NSObject {
     
-    let manager = CLLocationManager.init()
-    let date = Date()
-    var timer : Timer?
+    static let sharedInstance = LocationController()
     
-    override init() {
+    private let manager = CLLocationManager.init()
+    private let date = Date()
+    private var timer : Timer?
+    private var running: Bool = false
+    private var lastLocation: CLLocation?
+    
+    private override init() {
     }
-
     
     func start() {
-        manager.requestAlwaysAuthorization()
-        manager.delegate = self
-        manager.distanceFilter = kCLDistanceFilterNone
-        manager.desiredAccuracy = kCLLocationAccuracyBest
-        manager.allowsBackgroundLocationUpdates = true
-        manager.pausesLocationUpdatesAutomatically = false
-        manager.startUpdatingLocation()
-        timer = Timer.scheduledTimer(withTimeInterval: 60, repeats: true) { (t:Timer) in
-            let minutes = abs(self.date.timeIntervalSinceNow) / 60
-            DDLogInfo("[TIMER] [\(round(minutes)) MIN]")
+        
+        if running == false {
+            manager.requestAlwaysAuthorization()
+            manager.delegate = self
+            manager.distanceFilter = kCLDistanceFilterNone
+            manager.desiredAccuracy = kCLLocationAccuracyBest
+            manager.allowsBackgroundLocationUpdates = true
+            manager.pausesLocationUpdatesAutomatically = false
+            manager.startUpdatingLocation()
+            timer = Timer.scheduledTimer(withTimeInterval: 60, repeats: true) { (t:Timer) in
+                let minutes = round(abs(self.date.timeIntervalSinceNow) / 60)
+                let secondsOld = round(abs(self.lastLocation?.timestamp.timeIntervalSinceNow ?? 999))
+                DDLogInfo("[TIMER] [\(minutes) MIN] [LOCATION-TIMESTAMP:\(secondsOld) SEC OLD]")
+            }
+            running = true
         }
     }
 }
@@ -38,12 +46,13 @@ class LocationController : NSObject {
 extension LocationController : CLLocationManagerDelegate {
     public func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         
+        lastLocation = locations.last
         guard let newLocation = locations.last else {
-            DDLogInfo("[NO LOCATION]")
+            DDLogVerbose("[NO LOCATION]")
             return
         }
         
-        DDLogInfo("[LOC:\(newLocation.timestamp)/ACCURACY:\(round(newLocation.horizontalAccuracy))]")
+        DDLogVerbose("[LOC:\(newLocation.timestamp)/ACCURACY:\(round(newLocation.horizontalAccuracy))]")
     }
     
     public func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
