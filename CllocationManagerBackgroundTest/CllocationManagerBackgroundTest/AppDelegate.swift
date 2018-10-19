@@ -8,7 +8,7 @@
 
 import UIKit
 import CocoaLumberjackSwift
-
+import os.log
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
@@ -58,6 +58,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
 
     func applicationDidReceiveMemoryWarning(_ application: UIApplication) {
+        os_log("701781652.appdelegate.applicationDidReceiveMemoryWarning")
         DDLogInfo("[APPDELEGATE] [MEMORY-WARNING]")
     }
 }
