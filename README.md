@@ -1,6 +1,8 @@
 # ios-cllocationmanager-background
 Sample code to demonstrate iOS 12 CLLocationManager background issues and help to understand and explain the problem with Apple.
 
+Issue on stackoverflow: https://stackoverflow.com/questions/53005174/ios-12-terminates-apps-in-the-background-for-no-reason
+
 ### DESCRIPTION OF PROBLEM
 Starting from iOS 12 the CLLocationManager doesn't run endless anymore in the background. The app get's terminated without a crashlog at random times. This was working fine before iOS 12.
 
